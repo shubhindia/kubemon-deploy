@@ -1,0 +1,13 @@
+kind: Service
+metadata:
+  name: kubemon-service
+  namespace: kubemon
+spec:
+  selector:
+    app: kubemon
+  type: LoadBalancer
+  ports:
+  - name: service-http
+    port: 8080
+    protocol: TCP
+

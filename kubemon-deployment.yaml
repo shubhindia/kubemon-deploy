@@ -1,0 +1,28 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: kubemon
+  namespace: kubemon
+  labels:
+    name: kubemon
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: kubemon
+  template:
+    metadata:
+     labels:
+       app: kubemon
+    spec:
+      containers:
+      - name: kubemon
+        image: shubhindia/kubemon
+        imagePullPolicy: Always
+        env:
+        - name: APISERVER
+          value: "api-server"
+        - name: TOKEN
+          value: "access-token"
+        ports:
+        - containerPort: 8080
